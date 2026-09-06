@@ -1,5 +1,5 @@
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from fuzz_fill.env import FUZZ_FILL_LLC, FUZZ_FILL_LLVM_DIS, FUZZ_FILL_LLVM_REDUCE
@@ -74,6 +74,8 @@ def main():
     else:
         pipeline_steps = cfg.pipeline
 
+    _ = tools
+
     test = Test(cfg.original_test, None, f"/{cfg.file}", cfg.line)
 
     current_file = Path(__file__).resolve()
@@ -82,7 +84,7 @@ def main():
         / "data"
         / "output"
         / cfg.original_test.name
-        / datetime.now().strftime("%Y%m%d-%H%M%S")
+        / datetime.now(tz=timezone.utc).strftime("%Y%m%d-%H%M%S")
     )
     output_dir = cfg.output_dir or default_output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
