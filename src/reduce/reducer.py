@@ -1,17 +1,17 @@
 from __future__ import annotations
 
 import shutil
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, Mapping
+from typing import Any
 
-from reduce.pass_registry import known_pass_ids, passes_from_ids
-from reduce.test import Test
-
-from reduce.config import PipelineStep
 from fuzz_fill.llvm_tools import ReduceTools
 from fuzz_fill.log import get_logger, log_timing, run_subprocess
+from reduce.config import PipelineStep
+from reduce.pass_registry import passes_from_ids
+from reduce.test import Test
 
 logger = get_logger("reduce")
 

@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import io
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from added_lines.added_lines import AddedLine, collect_added_lines
@@ -24,7 +24,7 @@ def resolve_output_dir(path: Path) -> Path:
     s = str(path)
     if "<timestamp>" in s:
         return Path(
-            s.replace("<timestamp>", datetime.now().strftime("%Y%m%d-%H%M%S"))
+            s.replace("<timestamp>", datetime.now(tz=timezone.utc).strftime("%Y%m%d-%H%M%S"))
         )
     return path
 

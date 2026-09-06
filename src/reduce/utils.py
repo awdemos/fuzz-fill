@@ -1,8 +1,8 @@
 """Shared utilities for scripts in this folder."""
-import subprocess
-import os
 import json
-from pathlib import PurePosixPath, Path
+import os
+import subprocess
+from pathlib import Path, PurePosixPath
 from urllib.parse import urlparse
 
 
@@ -21,7 +21,7 @@ def run_one_test(
     cmd = [str(llc_bin)] + test_cmd.split()[1:]
     env = os.environ.copy()
     env['UBSAN_OPTIONS'] = f'coverage=1:coverage_dir={coverage_dir}'
-    return subprocess.run(cmd, cwd=fuzzer_test_dir, capture_output=True, text=True, env=env)
+    return subprocess.run(cmd, cwd=fuzzer_test_dir, capture_output=True, text=True, env=env, check=False)
 
 def get_repo_base(script_file: str) -> Path:
     """Return the repo root (parent of the scripts/ directory)."""

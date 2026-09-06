@@ -1,8 +1,8 @@
 import csv
-
-import pandas as pd
 from pathlib import Path
 from typing import Literal
+
+import pandas as pd
 
 from coverage.constants import DEFAULT_SOURCE_CODE_FILTER
 from coverage.filepaths import Filepaths
@@ -38,7 +38,7 @@ class CoverageAnalyzer:
         if self.mode == "full":
             self.get_full_incremental_coverage()
         elif self.mode == "partial":
-            raise NotImplementedError(f"Partial coverage mode is not implemented")
+            raise NotImplementedError("Partial coverage mode is not implemented")
         else:
             raise ValueError(f"Invalid mode: {self.mode}")
 
@@ -160,4 +160,4 @@ def get_sancov_file(new_test_dir: Path) -> Path | None:
     if len(sancov_files) != 1:
         logger.warning("expected 1 sancov file, got %d", len(sancov_files))
         return None
-    return list(new_test_dir.rglob('*sancov'))[0]
+    return sancov_files[0]

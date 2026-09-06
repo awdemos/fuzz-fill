@@ -150,7 +150,7 @@ def run_subprocess(
 
     start = time.perf_counter()
     try:
-        return subprocess.run(cmd, **kwargs)
+        return subprocess.run(cmd, check=False, **kwargs)
     finally:
         elapsed = time.perf_counter() - start
         name = label or " ".join(cmd[:2])

@@ -3,28 +3,25 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from coverage.analyser import CoverageAnalyzer
 from coverage.candidate_test_settings import load_llc_flag_variants
-from coverage.filepaths import Filepaths
-from coverage.test_runner import TestRunner
 from coverage.constants import (
-    DEFAULT_LLC_ADDRESS_LINE_MAP_FILE,
-    DEFAULT_OPT_ADDRESS_LINE_MAP_FILE,
-    DEFAULT_LLC_LINE_POINT_SUMMARY_FILE,
-    DEFAULT_OPT_LINE_POINT_SUMMARY_FILE,
     DEFAULT_LINE_COVERAGE_SUMMARY_FILE,
-    DEFAULT_OUTPUT_DIR,
-    DEFAULT_MIN_CANDIDATE_TESTS_CSV,
-    DEFAULT_MIN_CANDIDATE_TESTS_POINTS_CSV,
+    DEFAULT_LLC_ADDRESS_LINE_MAP_FILE,
+    DEFAULT_LLC_LINE_POINT_SUMMARY_FILE,
     DEFAULT_MIN_CANDIDATE_TESTS_BATCH_SIZE,
     DEFAULT_NEW_COVERAGE_CSV,
+    DEFAULT_OPT_ADDRESS_LINE_MAP_FILE,
+    DEFAULT_OPT_LINE_POINT_SUMMARY_FILE,
+    DEFAULT_OUTPUT_DIR,
     DEFAULT_SOURCE_CODE_FILTER,
     DEFAULT_TARGET_LINES_REPORT,
     DEFAULT_TIMINGS_FILE,
 )
-
-from coverage.analyser import CoverageAnalyzer
+from coverage.filepaths import Filepaths
 from coverage.min_candidate_tests import MinCandidateTestsSelector
 from coverage.target_lines_check import run_target_lines_check
+from coverage.test_runner import TestRunner
 from fuzz_fill.env import (
     FUZZ_FILL_LLC,
     FUZZ_FILL_LLVM_LIT,

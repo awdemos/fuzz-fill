@@ -1,6 +1,7 @@
 import dataclasses
 from pathlib import Path
 
+
 @dataclasses.dataclass
 class Filepaths:
     output_dir: Path

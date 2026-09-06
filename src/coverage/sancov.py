@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 import tempfile
-import json
-import pandas as pd
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+import pandas as pd
 
 from fuzz_fill.log import get_logger, log_timing, run_subprocess
 
@@ -42,7 +43,7 @@ class Sancov:
         self.suffix = suffix
 
         if self.raw_sancov_dir is not None:
-            self.output_dir = self.raw_sancov_dir.parent / f"processed_sancov"
+            self.output_dir = self.raw_sancov_dir.parent / "processed_sancov"
             self.output_dir.mkdir(parents=True, exist_ok=True)
 
     @staticmethod

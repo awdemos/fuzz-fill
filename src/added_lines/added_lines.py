@@ -109,7 +109,7 @@ def parse_added_lines(patch: str) -> list[AddedLine]:
             i += 1
             while i < len(lines):
                 body = lines[i]
-                if body.startswith("diff --git ") or body.startswith("--- "):
+                if body.startswith(("diff --git ", "--- ")):
                     break
                 if _HUNK_RE.match(body):
                     break

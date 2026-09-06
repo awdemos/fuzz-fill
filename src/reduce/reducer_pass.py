@@ -9,9 +9,9 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
+from fuzz_fill.log import get_logger, run_subprocess
 from reduce.reducer import ReduceContext
 from reduce.test import Test
-from fuzz_fill.log import get_logger, run_subprocess
 
 logger = get_logger("reduce.pass")
 
